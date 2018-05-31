@@ -31,7 +31,7 @@
 
 - name: ensure ufw ports are set
   ufw: rule={{ item.rule }} port={{ item.port }} proto={{ item.proto }} state=reloaded
-  with_items: security_ufw_ports
+  with_items: "{{ security_ufw_ports }}"
 
 - name: ensure fail2ban is installed
   apt: pkg=fail2ban state=latest update_cache=true cache_valid_time={{ apt_cache_valid_time }}
